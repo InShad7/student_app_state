@@ -12,7 +12,6 @@ import '../../db/function/db_function.dart';
 class AddStudent extends StatelessWidget {
   AddStudent({Key? key}) : super(key: key);
 
-
   final _nameController = TextEditingController();
 
   final _ageController = TextEditingController();
@@ -93,7 +92,7 @@ class AddStudent extends StatelessWidget {
   Widget dpImage() {
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
-        print('consumer widget only');
+        // print('consumer widget only');
         imagePath = ref.watch(imgProvider);
         // child:
         return Stack(
@@ -105,16 +104,18 @@ class AddStudent extends StatelessWidget {
                   : FileImage(File(imagePath!)),
             ),
             Positioned(
-                bottom: 10,
-                right: 25,
-                child: InkWell(
-                    child: const Icon(
-                      Icons.add_a_photo_outlined,
-                      size: 30,
-                    ),
-                    onTap: () {
-                      takePhoto(ref);
-                    })),
+              bottom: 10,
+              right: 25,
+              child: InkWell(
+                child: const Icon(
+                  Icons.add_a_photo_outlined,
+                  size: 30,
+                ),
+                onTap: () {
+                  takePhoto(ref);
+                },
+              ),
+            ),
           ],
         );
       },
